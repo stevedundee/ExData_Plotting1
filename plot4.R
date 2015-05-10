@@ -1,7 +1,7 @@
 plot4.R <- function() {
   require(sqldf)
   data <- read.csv.sql("household_power_consumption.txt",sep=";","select * from file where Date in ('1/2/2007','2/2/2007')")
- ### png("plot4.png")
+  png("plot4.png")
   par(mfrow=c(2,2))
   data <- transform(data,DateTime = strptime(paste(Date,Time,sep=" "),"%d/%m/%Y %H:%M:%S"))
   
@@ -24,5 +24,5 @@ plot4.R <- function() {
   plot(data$DateTime,data$Global_reactive_power,type="n",ylab="Global Reactive Power (kilowatts)",xlab="datetime")
   lines(data$DateTime,data$Global_reactive_power)
  
- ### dummy <- dev.off()
+  dummy <- dev.off()
 }
